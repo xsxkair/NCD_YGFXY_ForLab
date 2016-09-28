@@ -1,0 +1,18 @@
+.devicethumbbusy {
+    -fx-background-color:  silver ;
+    
+}
+
+.devicethumbfree {
+    -fx-background-color: mediumturquoise ;
+}
+
+.DataPointPane:hover{
+	-fx-scale-x:3;
+	-fx-scale-y:3;
+	-fx-cursor:hand ;
+}
+
+.chart-series-line{
+	-fx-stroke-width:1;
+}

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-9-2 17:25:43 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.org.xsx.beans.TestDataBean" table="TESTDATABEAN">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="deviceid" type="java.lang.String">
+            <column name="DEVICEID" />
+        </property>
+        <property name="deviceip" type="java.lang.String">
+            <column name="DEVICEIP" />
+        </property>
+        <property name="testdate" type="java.sql.Date">
+            <column name="TESTDATE" />
+        </property>
+        <property name="testtime" type="java.sql.Time">
+            <column name="TESTTIME" />
+        </property>
+        <property name="testername" type="java.lang.String">
+            <column name="TESTERNAME" />
+        </property>
+        <property name="testcount" type="java.lang.String">
+            <column name="TESTCOUNT" />
+        </property>
+        <property name="testdesc" type="java.lang.String">
+            <column name="TESTDESC" />
+        </property>
+        <property name="t_c" type="java.lang.Float">
+            <column name="T_C" />
+        </property>
+        <property name="t_tc" type="java.lang.Float">
+            <column name="T_TC" />
+        </property>
+        <property name="testdata" type="text">
+            <column name="TESTDATA" length="4096"/>
+        </property>
+        <property name="t_location" type="java.lang.Integer">
+            <column name="T_LOCATION" />
+        </property>
+        <property name="b_location" type="java.lang.Integer">
+            <column name="B_LOCATION" />
+        </property>
+        <property name="c_location" type="java.lang.Integer">
+            <column name="C_LOCATION" />
+        </property>
+    </class>
+</hibernate-mapping>
