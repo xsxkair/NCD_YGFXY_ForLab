@@ -98,14 +98,13 @@ public class MakeQRCodeService extends Service<Void>{
         				myQrCodeBean.getLow()+"#"+myQrCodeBean.getHigh()+"#"+myQrCodeBean.getDanwei()+"#"+myQrCodeBean.getT_location()+"#"+
         				myQrCodeBean.getBiaoqunum()+"#");
         		
-        	//	if("1" == myQrCodeBean.getBiaoqunum()){
-        			//content.append(myQrCodeBean.getQu1_a()+"#"+myQrCodeBean.getQu1_b()+"#"+myQrCodeBean.getQu1_c()+"#");
-        			content.append(myQrCodeBean.getQu1_a()+myQrCodeBean.getQu1_b()+myQrCodeBean.getQu1_c()+"#");
-        	//	}
-        	//	else{
-        	//		content.append(myQrCodeBean.getFenduan()+"#"+myQrCodeBean.getQu1_a()+"#"+myQrCodeBean.getQu1_b()+"#"
-        	//				+myQrCodeBean.getQu1_c()+"#"+myQrCodeBean.getQu2_a()+"#"+myQrCodeBean.getQu2_b()+"#"+myQrCodeBean.getQu2_c()+"#");
-        	//	}
+        		if("1" == myQrCodeBean.getBiaoqunum()){
+        			content.append(myQrCodeBean.getQu1_a()+"#"+myQrCodeBean.getQu1_b()+"#"+myQrCodeBean.getQu1_c()+"#");
+        		}
+        		else{
+        			content.append(myQrCodeBean.getFenduan()+"#"+myQrCodeBean.getQu1_a()+"#"+myQrCodeBean.getQu1_b()+"#"
+        					+myQrCodeBean.getQu1_c()+"#"+myQrCodeBean.getQu2_a()+"#"+myQrCodeBean.getQu2_b()+"#"+myQrCodeBean.getQu2_c()+"#");
+        		}
         		content.append(myQrCodeBean.getWaittime()+"#"+myQrCodeBean.getC_location()+"#NCD"+myQrCodeBean.getPihaohead()+String .format("%04d",i)+
         				"#"+myQrCodeBean.getOuttime()+"#");
         		

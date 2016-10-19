@@ -26,6 +26,10 @@ import com.org.xsx.dao.TesterDao;
 import com.org.xsx.dao.TestDataDao;
 import com.org.xsx.tools.ClientSocket;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -50,6 +54,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseButton;
@@ -57,8 +63,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.util.Duration;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -106,6 +114,9 @@ public class DeviceTestPage {
 	@FXML
 	TextArea GB_LogTextArea;
 	
+	@FXML
+	VBox warninginfo;
+	
 	String LastSaveDirectory = null;
 	
 	public DeviceTestPage(DeviceInfoBean deviceInfo){
@@ -143,6 +154,34 @@ public class DeviceTestPage {
         GB_TableColumn1.setCellValueFactory(new PropertyValueFactory<TestDataItem, Double>("my_T_C_bili"));
         
         GB_TableColumn2.setCellValueFactory(new PropertyValueFactory<TestDataItem, Double>("my_T_TC_bili"));
+        
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setWidth(20);
+        dropShadow.setHeight(20);
+        dropShadow.setRadius(5);
+        Timeline animation = new Timeline();
+
+        animation.getKeyFrames().addAll(
+               new KeyFrame(Duration.ZERO,
+                    new KeyValue(dropShadow.colorProperty(), Color.RED)
+                ),
+                new KeyFrame(new Duration(10000), // set end position at 40s
+                	new KeyValue(dropShadow.colorProperty(), Color.GREEN)
+                ),
+                new KeyFrame(new Duration(20000), // set end position at 40s
+                    new KeyValue(dropShadow.colorProperty(), Color.BLUE)
+                ),
+                new KeyFrame(new Duration(30000), // set end position at 40s
+                        new KeyValue(dropShadow.colorProperty(), Color.RED)
+                )
+            );
+
+        animation.setAutoReverse(true);
+
+        animation.setCycleCount(Animation.INDEFINITE);
+        
+        warninginfo.setEffect(dropShadow);
+        animation.play();
         
         S_Tab = new Tab(S_DeviceInfo.getDeviceid()+" - нч");
         S_Tab.setContent(root);

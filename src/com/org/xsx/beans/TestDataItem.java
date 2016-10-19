@@ -88,12 +88,13 @@ public class TestDataItem {
 								String comname = null;
 								ArrayList<String> names = new ArrayList<>();
 								ArrayList<CommandLinksButtonType> links = new ArrayList<>();
-								
-								names.add("B");
+								int y=0,index;
+								int max,min,temp;
+
 								names.add("C");
 								names.add("T");
 											
-								for (int y=0; y < names.size(); y++ ) {
+								for (y=0; y < names.size(); y++ ) {
 									links.add(new CommandLinksButtonType(names.get(y), true));
 								}
 										
@@ -108,26 +109,87 @@ public class TestDataItem {
 									}
 									if(comname != null){
 										DataPointUI dataPointUI = null;
-										if(comname.equals("B")){
-											dataPointUI =  (DataPointUI) my_seires.getData().get(my_B.get()).getNode();//(DataPointUI) B_Point.get().getNode();
-											if(dataPointUI != null)
+										if(comname.equals("C")){
+											
+											if(my_C.get() > 0)
+											{
+												dataPointUI = (DataPointUI) my_seires.getData().get(my_C.get()).getNode();
 												dataPointUI.SetMyStyle(DataPointStyleEnum.Normol);
-											((DataPointUI)(data.getNode())).SetMyStyle(DataPointStyleEnum.B_Line);
-											my_B.set(data.getXValue().intValue());
-										}
-										else if(comname.equals("C")){
-											dataPointUI = (DataPointUI) my_seires.getData().get(my_C.get()).getNode();//(DataPointUI) C_Point.get().getNode();
-											if(dataPointUI != null)
-												dataPointUI.SetMyStyle(DataPointStyleEnum.Normol);
-											((DataPointUI)(data.getNode())).SetMyStyle(DataPointStyleEnum.C_Line);
-											my_C.set(data.getXValue().intValue());
+											}
+											
+											if(data.getXValue().intValue() > 25)
+												y = data.getXValue().intValue() - 25;
+											else
+												y = 0;
+											
+											max = 0;
+											index = y;
+											for(; y<(data.getXValue().intValue() + 25); y++){
+												temp = my_seires.getData().get(y).getYValue().intValue();
+												if(max < temp)
+												{
+													max = temp;
+													index = y;
+												}
+											}
+											my_C.set(index);
+											dataPointUI = (DataPointUI) my_seires.getData().get(my_C.get()).getNode();
+											dataPointUI.SetMyStyle(DataPointStyleEnum.C_Line);
+
 										}
 										else if(comname.equals("T")){
-											dataPointUI = (DataPointUI) my_seires.getData().get(my_T.get()).getNode();//(DataPointUI) T_Point.get().getNode();
-											if(dataPointUI != null)
+											
+											if(my_T.get() > 0)
+											{
+												dataPointUI = (DataPointUI) my_seires.getData().get(my_T.get()).getNode();
 												dataPointUI.SetMyStyle(DataPointStyleEnum.Normol);
-											((DataPointUI)(data.getNode())).SetMyStyle(DataPointStyleEnum.T_Line);
-											my_T.set(data.getXValue().intValue());
+											}
+											
+											if(data.getXValue().intValue() > 25)
+												y = data.getXValue().intValue() - 25;
+											else
+												y = 0;
+											
+											max = 0;
+											index = y;
+											for(; y<(data.getXValue().intValue() + 25); y++){
+												temp = my_seires.getData().get(y).getYValue().intValue();
+												if(max < temp)
+												{
+													max = temp;
+													index = y;
+												}
+											}
+											my_T.set(index);
+											dataPointUI = (DataPointUI) my_seires.getData().get(my_T.get()).getNode();
+											dataPointUI.SetMyStyle(DataPointStyleEnum.T_Line);
+											
+										}
+										
+										//如果t线有选择，则自动找基线
+										if((my_T.get() > 0) && (my_T.get() < my_C.get())){
+											y = my_T.get();
+											
+											min = 65000;
+											index = y;
+											for(; y<my_C.get(); y++){
+												temp = my_seires.getData().get(y).getYValue().intValue();
+												if(min > temp)
+												{
+													min = temp;
+													index = y;
+												}
+											}
+											
+											if(my_B.get() > 0)
+											{
+												dataPointUI = (DataPointUI) my_seires.getData().get(my_B.get()).getNode();
+												dataPointUI.SetMyStyle(DataPointStyleEnum.Normol);
+											}
+											
+											my_B.set(index);
+											dataPointUI = (DataPointUI) my_seires.getData().get(my_B.get()).getNode();
+											dataPointUI.SetMyStyle(DataPointStyleEnum.B_Line);
 										}
 									}
 								}

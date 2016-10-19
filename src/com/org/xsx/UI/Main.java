@@ -31,7 +31,7 @@ public class Main extends Application{
 		
 		ScenceBean.GetInstance().setGB_Scene(UI_SystemInit.GetInstance().getScene());
 		
-		primaryStage.setTitle("荧光分析仪--FOR BIO LAB OF NCD ONLY  V2.0");
+		primaryStage.setTitle("荧光分析仪--FOR BIO LAB OF NCD ONLY  V2.2");
 		primaryStage.getIcons().add(new Image(new FileInputStream(new File("RES/logo.png"))));
 		primaryStage.setResizable(true);
 		primaryStage.show();
