@@ -10,6 +10,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/iText"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/zxing-google"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/itext"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Mariadb_Driver"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Mysql"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

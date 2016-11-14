@@ -4,9 +4,10 @@
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-   	 	<property name="hibernate.connection.driver_class">org.mariadb.jdbc.Driver</property>
-		<property name="hibernate.connection.url">jdbc:mysql://123.57.94.39:3306/ncd_lab?useUnicode=true&amp;characterEncoding=UTF-8</property>
-		<property name="hibernate.connection.username">YGFXY</property>
+	
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://192.168.0.100:3306/ncd_lab?useUnicode=true&amp;characterEncoding=UTF-8</property>
+		<property name="hibernate.connection.username">xsx_kair</property>
 		<property name="hibernate.connection.password">xsx127</property>
 		
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>

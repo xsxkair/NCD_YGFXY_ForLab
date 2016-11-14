@@ -57,9 +57,11 @@ public class SystemInitService extends Service<Boolean>{
     			HibernateSessionBean.GetInstance().Hibernate_Init();
 			} catch (Exception e) {
 				// TODO: handle exception
+				e.printStackTrace();
 				updateMessage("Êý¾Ý¿âÁ´½ÓÊ§°Ü"); 
 	    		updateProgress(10, 100);
 	    		Thread.sleep(10000); 
+	    		
 			}
     		
     		
